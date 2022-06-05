@@ -22,6 +22,10 @@ const bookSchema=new Schema({
         type:Boolean,
        
     },
+    image:{
+        type:String,
+        required:true
+    }
 
 });
 module.exports=mongoose.model("Book",bookSchema);
