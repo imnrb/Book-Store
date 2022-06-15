@@ -7,11 +7,15 @@ const cors=require("cors");
 app.use(express.json());
 app.use(cors());
 app.use("/books",router)
+const PORT=process.env.PORT||5000;
+if(process.env.NODE_ENV=="production")
+{
 
+app.use(express.static("book-store/build"));
+}
 mongoose.connect("mongodb+srv://admin:oubUOQOe2x3LsRNI@cluster0.o2yoz3e.mongodb.net/bookStore?retryWrites=true&w=majority")
 .then(() => console.log("connected to database"))
-.then(() => {app.listen(5000)}).catch((err)=>console.log(err));
-
+.then(() => {app.listen(PORT)}).catch((err)=>console.log(err));
 
 
 
